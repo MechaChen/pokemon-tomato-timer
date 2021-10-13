@@ -7,15 +7,20 @@ type TimerProviderProps = {
 type Value = {
     isStart: boolean;
     setIsStart: (isStart: boolean) => void;
+    time: number;
+    setTime: (time: number | ((time: number) => number)) => void;
 };
 
 const TimerContext = createContext({} as Value);
 
 export function TimerProvider(props: TimerProviderProps) {
     const [isStart, setIsStart] = useState<boolean>(false);
+    const [time, setTime] = useState<number>(10);
     const value = {
         isStart,
         setIsStart,
+        time,
+        setTime,
     };
 
     return <TimerContext.Provider value={value} {...props} />;

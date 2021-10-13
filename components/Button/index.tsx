@@ -2,9 +2,16 @@ import { useTimerContext } from '@context/index';
 import * as Styled from './styles';
 
 function Button() {
-    const { setIsStart } = useTimerContext();
+    const { setIsStart, setTime } = useTimerContext();
 
-    return <Styled.Container onClick={() => setIsStart(true)}>Be Focus!</Styled.Container>;
+    function countDown() {
+        setInterval(() => {
+            setTime((time) => time - 1);
+        }, 1000);
+        setIsStart(true);
+    }
+
+    return <Styled.Container onClick={countDown}>Be Focus!</Styled.Container>;
 }
 
 export default Button;
