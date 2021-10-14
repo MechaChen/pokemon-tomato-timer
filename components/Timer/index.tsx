@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PokeBall from '@components/PokeBall';
 import * as Styled from './styles';
 import { useTimerContext } from '@context/index';

@@ -1,13 +1,25 @@
+import router, { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { useTimerContext } from '@context/index';
 import * as Styled from './styles';
 
 function Button() {
-    const { setIsStart, setTime } = useTimerContext();
+    const { time, setIsStart, setTime } = useTimerContext();
+    const [timerId, setTimerId] = useState<any>();
+
+    useEffect(() => {
+        if (time === 0) {
+            setIsStart(false);
+            clearInterval(timerId);
+            router.push('/catch');
+        }
+    }, [time]);
 
     function countDown() {
-        setInterval(() => {
+        let timerId = setInterval(() => {
             setTime((time) => time - 1);
         }, 1000);
+        setTimerId(timerId);
         setIsStart(true);
     }
 
