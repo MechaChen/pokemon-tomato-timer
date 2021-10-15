@@ -2,11 +2,22 @@ import { useTimerContext } from '@context/index';
 import * as Styled from './styles';
 
 function PokeBall() {
-    const { isStart } = useTimerContext();
+    const { isStart, time } = useTimerContext();
+
+    const ballType = (function dependTimeToChangeBall() {
+        switch (time) {
+            case 30:
+                return 'ultraball';
+            case 20:
+                return 'greatball';
+            default:
+                return '';
+        }
+    })();
 
     return (
         <Styled.Container className="PokeBall" isStart={isStart}>
-            <div className="poke-ball">
+            <div className={`poke-ball ${ballType}`}>
                 <div className="border">
                     <div className="inner"></div>
                 </div>

@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 const $blueBg = '#074777';
 const $shadow = '#052F48';
+const $shadowRGB = '5, 47, 72';
 const $white = '#fff';
 const $border = '#1e1e1e';
+const $borderRGB = '30, 30, 30';
 
 const $pokeRed = '#912324';
 const $greatBlue = '#155AC7';
@@ -26,11 +28,11 @@ type ContainerProps = {
 
 export const Container = styled.div<ContainerProps>`
     div[class*='-ball'] {
-        --pokeball-size: 250px;
+        --pokeball-size: 230px;
         width: var(--pokeball-size);
         height: var(--pokeball-size);
         position: relative;
-        @media (max-height: 500px) {
+        /* @media (max-height: 500px) {
             --pokeball-size: calc(300px / 1.5);
             width: var(--pokeball-size);
             height: var(--pokeball-size);
@@ -44,7 +46,7 @@ export const Container = styled.div<ContainerProps>`
             --pokeball-size: calc(300px / 1.8);
             width: var(--pokeball-size);
             height: var(--pokeball-size);
-        }
+        } */
     }
 
     .border {
@@ -54,9 +56,9 @@ export const Container = styled.div<ContainerProps>`
         border-radius: 100%;
         background: transparent;
         border: calc(var(--pokeball-size) * 0.04) solid #1e1e1e;
-        box-sizing: border-box;
-        box-shadow: inset 5px 10px 0px rgba(${$shadow}, 0.1),
-            inset -13px -20px 0px rgba(${$shadow}, 0.2);
+        /* box-sizing: border-box; */
+        box-shadow: inset 5px 10px 0px rgba(${$shadowRGB}, 0.1),
+            inset -13px -20px 0px rgba(${$shadowRGB}, 0.2);
         z-index: 10;
         ${(props) =>
             props.isStart &&
@@ -84,13 +86,13 @@ export const Container = styled.div<ContainerProps>`
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 2px 2px 0 2px rgba(${$border}, 0.2);
+            box-shadow: 2px 2px 0 2px rgba(${$borderRGB}, 0.2);
             z-index: 10;
             &:before {
                 content: '';
                 width: calc(var(--pokeball-size) / 6);
                 height: calc(var(--pokeball-size) / 6);
-                background: $white;
+                background: ${$white};
                 border-radius: 100%;
                 border: calc(var(--pokeball-size) * 0.025) solid ${$border};
                 position: absolute;
@@ -108,7 +110,7 @@ export const Container = styled.div<ContainerProps>`
         position: relative;
         border-radius: 100%;
         border: calc(var(--pokeball-size) * 0.04) solid transparent;
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
         background: linear-gradient(
             lighten(${$border}, 5%) 0%,
             lighten(${$border}, 5%) 50%,
@@ -157,10 +159,7 @@ export const Container = styled.div<ContainerProps>`
     }
 
     // Great Ball
-    #greatball:checked ~ .toggle label[for='greatball'] {
-        background: lighten(${$shadow}, 5%);
-    }
-    #greatball:checked ~ .poke-ball {
+    .poke-ball.greatball {
         .ball {
             background: linear-gradient(
                 ${$greatBlue} 0%,
@@ -190,23 +189,20 @@ export const Container = styled.div<ContainerProps>`
     }
 
     // Ultra Ball
-    #ultraball:checked ~ .toggle label[for='ultraball'] {
-        background: lighten(${$shadow}, 5%);
-    }
-    #ultraball:checked ~ .poke-ball {
+    .poke-ball.ultraball {
         .ball {
             background: linear-gradient(
-                $ultra-yellow 0%,
-                $ultra-yellow 50%,
-                $white 50%,
-                $white 100%
+                ${$ultraYellow} 0%,
+                ${$ultraYellow} 50%,
+                ${$white} 50%,
+                ${$white} 100%
             );
             .extras:before {
                 content: '';
                 position: absolute;
                 width: 45%;
                 height: 40%;
-                background: $ultraGray;
+                background: ${$ultraGray};
                 left: 50%;
                 top: 7%;
                 border-radius: 4em 4em 0 0;
@@ -224,24 +220,32 @@ export const Container = styled.div<ContainerProps>`
                 z-index: 5;
             }
             &:before {
-                box-shadow: inset 20px 0 0 $ultra-gray, inset -20px 0 0 $ultraGray;
+                box-shadow: inset 20px 0 0 ${$ultraGray}, inset -20px 0 0 ${$ultraGray};
             }
         }
     }
 
     // Master Ball
-    #masterball:checked ~ .toggle label[for='masterball'] {
-        background: lighten(${$shadow}, 5%);
-    }
-
-    #masterball:checked ~ .poke-ball {
+    .poke-ball.masterball {
         .ball {
             background: linear-gradient(
-                $master-purple 0%,
-                $master-purple 50%,
-                $white 50%,
-                $white 100%
+                ${$masterPurple} 0%,
+                ${$masterPurple} 50%,
+                ${$white} 50%,
+                ${$white} 100%
             );
+            .extras:before {
+                content: '';
+                position: absolute;
+                width: 45%;
+                height: 40%;
+                background: ${$ultraGray};
+                left: 50%;
+                top: 7%;
+                border-radius: 4em 4em 0 0;
+                transform: translateX(-50%);
+                z-index: -10;
+            }
             &:before,
             &:after {
                 content: '';
