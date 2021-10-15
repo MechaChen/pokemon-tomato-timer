@@ -4,14 +4,14 @@ import { useTimerContext } from '@context/index';
 import * as Styled from './styles';
 
 function Button() {
-    const { time, setIsStart, setTime } = useTimerContext();
+    const { time, setIsStart, setTime, initTime } = useTimerContext();
     const [timerId, setTimerId] = useState<any>();
 
     useEffect(() => {
         if (time === 0) {
             setIsStart(false);
             clearInterval(timerId);
-            router.push('/catch');
+            router.push(`/catch?initTime=${initTime}`);
         }
     }, [time]);
 

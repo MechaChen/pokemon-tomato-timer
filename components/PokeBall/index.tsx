@@ -2,10 +2,10 @@ import { useTimerContext } from '@context/index';
 import * as Styled from './styles';
 
 function PokeBall() {
-    const { isStart, time } = useTimerContext();
+    const { isStart, time, initTime } = useTimerContext();
 
     const ballType = (function dependTimeToChangeBall() {
-        switch (time) {
+        switch (initTime) {
             case 30:
                 return 'ultraball';
             case 20:

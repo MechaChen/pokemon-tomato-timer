@@ -7,7 +7,7 @@ const RADIUS = 175;
 const STROKE = 5;
 
 function Timer() {
-    const { time, setTime } = useTimerContext();
+    const { time, setTime, setInitTime } = useTimerContext();
 
     let minAndSec = (function convertToMinAndSec() {
         let min = Math.floor(time / 60);
@@ -18,9 +18,14 @@ function Timer() {
         return `${min}:${sec}`;
     })();
 
+    function choseTime(e: any) {
+        setTime(Number(e.target.value));
+        setInitTime(Number(e.target.value));
+    }
+
     return (
         <div>
-            <select onChange={(e) => setTime(Number(e.target.value))}>
+            <select onChange={choseTime}>
                 <option>10</option>
                 <option>20</option>
                 <option>30</option>
