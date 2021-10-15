@@ -4,7 +4,7 @@ import { useTimerContext } from '@context/index';
 import * as Styled from './styles';
 
 function Button() {
-    const { time, setIsStart, setTime, initTime } = useTimerContext();
+    const { time, isStart, setIsStart, setTime, initTime } = useTimerContext();
     const [timerId, setTimerId] = useState<any>();
 
     useEffect(() => {
@@ -23,7 +23,11 @@ function Button() {
         setIsStart(true);
     }
 
-    return <Styled.Container onClick={countDown}>Be Focus!</Styled.Container>;
+    return (
+        <Styled.Container onClick={countDown} disabled={isStart}>
+            {isStart ? 'Be Focus!' : 'Start'}
+        </Styled.Container>
+    );
 }
 
 export default Button;
