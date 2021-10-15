@@ -1,0 +1,100 @@
+{
+    "level1": [
+        {
+            "id": "001",
+            "name": "Baulbasaur"
+        },
+        {
+            "id": "004",
+            "name": "Charmander"
+        },
+        {
+            "id": "001",
+            "name": "Squirtle"
+        },
+        {
+            "id": "025",
+            "name": "Pikachu.png"
+        },
+        {
+            "id": "039",
+            "name": "Jigglypuff"
+        },
+        {
+            "id": "060",
+            "name": "Poliwag"
+        },
+        {
+            "id": "063",
+            "name": "Abra"
+        }
+    ],
+    "level2": [
+        {
+            "id": "003",
+            "name": "Venusaur"
+        },
+        {
+            "id": "006",
+            "name": "Charizard"
+        },
+        {
+            "id": "031",
+            "name": "Nidoqueen"
+        },
+        {
+            "id": "034",
+            "name": "Nidoking"
+        },
+        {
+            "id": "038",
+            "name": "Ninetales"
+        },
+        {
+            "id": "040",
+            "name": "Wigglytuff"
+        },
+        {
+            "id": "057",
+            "name": "Primeape"
+        },
+        {
+            "id": "064",
+            "name": "Kadabra"
+        }
+    ],
+    "level3": [
+        {
+            "id": "121",
+            "name": "Starmie"
+        },
+        {
+            "id": "126",
+            "name": "Magmar"
+        },
+        {
+            "id": "131",
+            "name": "Lapras"
+        },
+        {
+            "id": "141",
+            "name": "Kabutops"
+        },
+        {
+            "id": "143",
+            "name": "Snorlax"
+        },
+        {
+            "id": "145",
+            "name": "Zapdos"
+        },
+        {
+            "id": "149",
+            "name": "Dragonite"
+        },
+        {
+            "id": "151",
+            "name": "Mew"
+        }
+    ]
+}

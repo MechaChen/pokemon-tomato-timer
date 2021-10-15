@@ -1,41 +1,49 @@
-import GlobalStyles from './styles/Global';
 import Image from 'next/image';
+import Head from 'next/head';
+import GlobalStyles from './styles/Global';
 import { Container } from './styles/Commons';
 import { useRouter } from 'next/router';
 import * as Styled from './styles/catch';
+import * as PokemonData from '../public/json/pokemons.json';
 
 function Catch() {
     const router = useRouter();
 
-    let name = (function dependInitTimeToName() {
+    const level = (function getLevelByInitTime() {
         switch (Number(router.query.initTime)) {
             case 30:
-                return 'Mewtwo';
+                return 'level3';
             case 20:
-                return 'Rapidash';
+                return 'level2';
             default:
-                return 'Pikachu';
+                return 'level1';
         }
     })();
 
-    let imageURL = (function dependInitTimeToImage() {
-        switch (Number(router.query.initTime)) {
-            case 30:
-                return '/pokemon/mewtwo.png';
-            case 20:
-                return '/pokemon/rapidash.png';
-            default:
-                return '/pokemon/pikachu.webp';
-        }
+    const randomPokemon = (function getPokemonByLevel() {
+        return PokemonData[level][getRandomInteger(PokemonData[level].length)];
     })();
+
+    function getRandomInteger(length: number) {
+        return Math.floor(Math.random() * length);
+    }
 
     return (
         <Container>
+            <Head>
+                <title>Catch Page</title>
+                <link rel="shortcut icon" href="/img/favicon.ico" />
+            </Head>
             <GlobalStyles />
             <Styled.catchingWord>
-                Congratulations! <br /> You catch a <b>{name}!</b>
+                Congratulations! <br /> You catch a <b>{randomPokemon.name}!</b>
             </Styled.catchingWord>
-            <Image src={imageURL} width={600} height={613} alt="catched pokemon" />
+            <Image
+                src={`/img/${level}/${randomPokemon.id}.png`}
+                width={475}
+                height={475}
+                alt="catched pokemon"
+            />
         </Container>
     );
 }
