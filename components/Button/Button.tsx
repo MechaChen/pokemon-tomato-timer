@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { decrementTime, setTimerId, setIsStart } from '@redux/tomatoTimerSlice';
 import * as Styled from './styles';
-import { selectInitTime, selectTime, selectIsStart } from '@redux/selectors';
+import { selectIsStart } from '@redux/selectors';
 
 function Button() {
     const isStart = useSelector(selectIsStart);

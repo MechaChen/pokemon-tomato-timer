@@ -10,7 +10,7 @@ interface TomatoTimerState {
 }
 
 // Define the initial state using that type
-const initialState: TomatoTimerState = {
+export const initialState: TomatoTimerState = {
     isStart: false,
     initTime: 10,
     time: 10,

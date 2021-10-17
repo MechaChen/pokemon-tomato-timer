@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 import GlobalStyles from './styles/Global';
@@ -20,9 +21,19 @@ function Catch() {
         }
     })();
 
-    const randomPokemon = (function getPokemonByLevel() {
+    const catchedPokemon = (function getRandomPokemonByLevel() {
         return PokemonData[level][getRandomInteger(PokemonData[level].length)];
     })();
+
+    useEffect(() => {
+        let catchedPokemons = JSON.parse(String(localStorage.getItem('catchedPokemons')));
+        if (Array.isArray(catchedPokemons)) {
+            catchedPokemons.push(catchedPokemon);
+            localStorage.setItem('catchedPokemons', JSON.stringify(catchedPokemons));
+        } else {
+            localStorage.setItem('catchedPokemons', JSON.stringify([]));
+        }
+    }, []);
 
     function getRandomInteger(length: number) {
         return Math.floor(Math.random() * length);
@@ -36,10 +47,10 @@ function Catch() {
             </Head>
             <GlobalStyles />
             <Styled.catchingWord>
-                Congratulations! <br /> You catch a <b>{randomPokemon.name}!</b>
+                Congratulations! <br /> You catch a <b>{catchedPokemon.name}!</b>
             </Styled.catchingWord>
             <Image
-                src={`/img/${level}/${randomPokemon.id}.png`}
+                src={`/img/${level}/${catchedPokemon.id}.png`}
                 width={475}
                 height={475}
                 alt="catched pokemon"

@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import * as Styled from './styles';
 import { useSelector, useDispatch } from 'react-redux';
-import { setTime, setInitTime, setIsStart } from '@redux/tomatoTimerSlice';
+import {
+    initialState,
+    setIsStart,
+    setTimerId,
+    setInitTime,
+    setTime,
+} from '@redux/tomatoTimerSlice';
 import { selectTime, selectInitTime, selectTimerId } from '@redux/selectors';
 import { useRouter } from 'next/router';
 
@@ -21,16 +27,19 @@ function Timer() {
         return `${min}:${sec}`;
     })();
 
-    useEffect(() => {
-        if (time === 0) {
-            dispatch(setIsStart(false));
-            clearInterval(timerId);
-            // when you try visiting last page, because of 0 time, it will redirect to catch page
-            dispatch(setTime(10));
-            dispatch(setInitTime(10));
-            router.push(`/catch?initTime=${initTime}`);
-        }
-    }, [time]);
+    useEffect(
+        function resetHomeState() {
+            if (time === 0) {
+                dispatch(setTime(initialState.time));
+                dispatch(setIsStart(initialState.isStart));
+                dispatch(setTimerId(initialState.timerId));
+                dispatch(setInitTime(initialState.initTime));
+                clearInterval(timerId);
+                router.push(`/catch?initTime=${initTime}`);
+            }
+        },
+        [time]
+    );
 
     function choseTime(e: any) {
         dispatch(setTime(+e.target.value));
