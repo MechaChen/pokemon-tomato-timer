@@ -1,15 +1,22 @@
-import router, { useRouter } from 'next/router';
+import router from 'next/router';
 import { useEffect, useState } from 'react';
-import { useTimerContext } from '@context/index';
+// import { useTimerContext } from '@context/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@redux/store';
+import { decrementTime, setIsStart } from '@redux/tomatoTimerSlice';
 import * as Styled from './styles';
 
 function Button() {
-    const { time, isStart, setIsStart, setTime, initTime } = useTimerContext();
+    // const { time, isStart, setIsStart, setTime, initTime } = useTimerContext();
     const [timerId, setTimerId] = useState<any>();
+
+    const { time, isStart, initTime } = useSelector((state: RootState) => state.tomatoTimer);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (time === 0) {
-            setIsStart(false);
+            dispatch(setIsStart(false));
             clearInterval(timerId);
             router.push(`/catch?initTime=${initTime}`);
         }
@@ -17,10 +24,10 @@ function Button() {
 
     function countDown() {
         let timerId = setInterval(() => {
-            setTime((time) => time - 1);
+            dispatch(decrementTime());
         }, 1000);
         setTimerId(timerId);
-        setIsStart(true);
+        dispatch(setIsStart(true));
     }
 
     return (

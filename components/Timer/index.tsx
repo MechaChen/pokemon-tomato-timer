@@ -2,12 +2,17 @@ import React, { useEffect } from 'react';
 import PokeBall from '@components/PokeBall';
 import * as Styled from './styles';
 import { useTimerContext } from '@context/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@redux/store';
+import { setTime, setInitTime } from '@redux/tomatoTimerSlice';
 
 const RADIUS = 175;
 const STROKE = 5;
 
 function Timer() {
-    const { time, setTime, setInitTime } = useTimerContext();
+    // const { time, setTime, setInitTime } = useTimerContext();
+    const { time } = useSelector((state: RootState) => state.tomatoTimer);
+    const dispatch = useDispatch();
 
     let minAndSec = (function convertToMinAndSec() {
         let min = Math.floor(time / 60);
@@ -19,12 +24,12 @@ function Timer() {
     })();
 
     function choseTime(e: any) {
-        setTime(Number(e.target.value));
-        setInitTime(Number(e.target.value));
+        dispatch(setTime(+e.target.value));
+        dispatch(setInitTime(+e.target.value));
     }
 
     return (
-        <div>
+        <>
             <select onChange={choseTime}>
                 <option>10</option>
                 <option>20</option>
@@ -37,7 +42,7 @@ function Timer() {
                 </Styled.Circle>
                 <PokeBall />
             </Styled.Timer>
-        </div>
+        </>
     );
 }
 
