@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react';
-import PokeBall from '@components/PokeBall';
 import * as Styled from './styles';
-import { useTimerContext } from '@context/index';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@redux/store';
-import { setTime, setInitTime } from '@redux/tomatoTimerSlice';
-
-const RADIUS = 175;
-const STROKE = 5;
+import { setTime, setInitTime, setIsStart } from '@redux/tomatoTimerSlice';
+import { selectTime, selectInitTime, selectTimerId } from '@redux/selectors';
+import { useRouter } from 'next/router';
 
 function Timer() {
-    // const { time, setTime, setInitTime } = useTimerContext();
-    const { time } = useSelector((state: RootState) => state.tomatoTimer);
+    const time = useSelector(selectTime);
+    const initTime = useSelector(selectInitTime);
+    const timerId = useSelector(selectTimerId);
     const dispatch = useDispatch();
+    const router = useRouter();
 
     let minAndSec = (function convertToMinAndSec() {
         let min = Math.floor(time / 60);
@@ -22,6 +20,17 @@ function Timer() {
 
         return `${min}:${sec}`;
     })();
+
+    useEffect(() => {
+        if (time === 0) {
+            dispatch(setIsStart(false));
+            clearInterval(timerId);
+            // when you try visiting last page, because of 0 time, it will redirect to catch page
+            dispatch(setTime(10));
+            dispatch(setInitTime(10));
+            router.push(`/catch?initTime=${initTime}`);
+        }
+    }, [time]);
 
     function choseTime(e: any) {
         dispatch(setTime(+e.target.value));
@@ -36,12 +45,6 @@ function Timer() {
                 <option>30</option>
             </select>
             <Styled.Time>{minAndSec}</Styled.Time>
-            <Styled.Timer>
-                <Styled.Circle LoopTime={100}>
-                    <circle r={RADIUS} cx={RADIUS + STROKE} cy={RADIUS + STROKE}></circle>
-                </Styled.Circle>
-                <PokeBall />
-            </Styled.Timer>
         </>
     );
 }

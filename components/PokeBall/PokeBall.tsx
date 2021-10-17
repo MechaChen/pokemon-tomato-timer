@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '@redux/store';
 import * as Styled from './styles';
+import { selectIsStart, selectInitTime } from '@redux/selectors';
 
 function PokeBall() {
-    const { isStart, initTime } = useSelector((state: RootState) => state.tomatoTimer);
+    const isStart = useSelector(selectIsStart);
+    const initTime = useSelector(selectInitTime);
 
     const ballType = (function dependTimeToChangeBall() {
         switch (initTime) {

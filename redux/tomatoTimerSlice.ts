@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../../app/store';
+import type { RootState } from './store';
 
 // Define a type for the slice state
 interface TomatoTimerState {
     isStart: boolean;
     initTime: number;
     time: number;
+    timerId: number | undefined;
 }
 
 // Define the initial state using that type
@@ -13,6 +14,7 @@ const initialState: TomatoTimerState = {
     isStart: false,
     initTime: 10,
     time: 10,
+    timerId: undefined,
 };
 
 export const counterSlice = createSlice({
@@ -33,12 +35,15 @@ export const counterSlice = createSlice({
         setInitTime: (state, { payload }: PayloadAction<number>) => {
             state.initTime = payload;
         },
+        setTimerId: (state, { payload }: PayloadAction<number | undefined>) => {
+            state.timerId = payload;
+        },
     },
 });
 
-export const { setIsStart, setTime, setInitTime, decrementTime } = counterSlice.actions;
+export const { setIsStart, setTime, setInitTime, decrementTime, setTimerId } = counterSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.counter.value;
+// export const selectCount = (state: RootState) => state.counter.value;
 
 export default counterSlice.reducer;
