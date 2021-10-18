@@ -11,12 +11,18 @@ type PrevProps = {
 
 export const Prev = styled.span<PrevProps>`
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-image: url('img/prev.png');
     background-size: cover;
     cursor: pointer;
     visibility: ${(props) => !props.isVisible && 'hidden'};
+    opacity: 0;
+    transition: opacity .5s;
+
+    ${Container}:hover & {
+        opacity: 1;
+    }
 `;
 
 export const Next = styled(Prev)`
@@ -27,7 +33,7 @@ export const Next = styled(Prev)`
 export const Time = styled.div`
     margin: 0 20px;
     text-align: center;
-    font-size: 50px;
+    font-size: 60px;
     padding: 10px 0;
     color: #fff;
 `;

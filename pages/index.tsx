@@ -22,6 +22,7 @@ const Home: NextPage = () => {
             </Head>
             <GlobalStyles />
             <Container>
+                <Styled.Quote>Pokémon, gotta catch 'em all</Styled.Quote>
                 <Styled.Animation>
                     <Styled.Circle LoopTime={100}>
                         <circle r={RADIUS} cx={RADIUS + STROKE} cy={RADIUS + STROKE}></circle>

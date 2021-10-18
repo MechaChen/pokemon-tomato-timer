@@ -4,6 +4,12 @@ type CircleProps = {
     LoopTime: number;
 };
 
+export const Quote = styled.blockquote`
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-style: italic;
+`;
+
 export const Animation = styled.div`
     position: relative;
 
