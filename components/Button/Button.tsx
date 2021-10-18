@@ -10,7 +10,7 @@ function Button() {
 
     function countDown() {
         let timerId: any = setInterval(() => {
-            dispatch(decrementTime());
+            dispatch(decrementTime(1));
         }, 1000);
         dispatch(setIsStart(true));
         dispatch(setTimerId(timerId));

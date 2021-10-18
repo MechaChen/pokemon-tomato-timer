@@ -7,6 +7,10 @@ import {
     setTimerId,
     setInitTime,
     setTime,
+    decrementTime,
+    incrementTime,
+    decrementInitTime,
+    incrementInitTime,
 } from '@redux/tomatoTimerSlice';
 import { selectTime, selectInitTime, selectTimerId } from '@redux/selectors';
 import { useRouter } from 'next/router';
@@ -30,31 +34,36 @@ function Timer() {
     useEffect(
         function resetHomeState() {
             if (time === 0) {
+                router.push(`/catch?initTime=${initTime}`);
                 dispatch(setTime(initialState.time));
                 dispatch(setIsStart(initialState.isStart));
                 dispatch(setTimerId(initialState.timerId));
                 dispatch(setInitTime(initialState.initTime));
                 clearInterval(timerId);
-                router.push(`/catch?initTime=${initTime}`);
             }
         },
         [time]
     );
 
-    function choseTime(e: any) {
-        dispatch(setTime(+e.target.value));
-        dispatch(setInitTime(+e.target.value));
+    function clickPrev() {
+        if (time < 10) return;
+
+        dispatch(decrementTime(5));
+        dispatch(decrementInitTime(5));
+    }
+
+    function clickNext() {
+        if (time > 60) return;
+        dispatch(incrementTime(5));
+        dispatch(incrementInitTime(5));
     }
 
     return (
-        <>
-            <select onChange={choseTime}>
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-            </select>
+        <Styled.Container>
+            <Styled.Prev onClick={clickPrev} isVisible={time > 10} />
             <Styled.Time>{minAndSec}</Styled.Time>
-        </>
+            <Styled.Next onClick={clickNext} isVisible={time < 60} />
+        </Styled.Container>
     );
 }
 

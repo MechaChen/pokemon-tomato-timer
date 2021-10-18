@@ -11,14 +11,15 @@ function Catch() {
     const router = useRouter();
 
     const level = (function getLevelByInitTime() {
-        switch (Number(router.query.initTime)) {
-            case 30:
-                return 'level3';
-            case 20:
-                return 'level2';
-            default:
-                return 'level1';
+        const initTime = Number(router.query.initTime);
+
+        if (initTime >= 30) {
+            return 'level3';
         }
+        if (initTime >= 20) {
+            return 'level2';
+        }
+        return 'level1';
     })();
 
     const catchedPokemon = (function getRandomPokemonByLevel() {

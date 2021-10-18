@@ -7,14 +7,13 @@ function PokeBall() {
     const initTime = useSelector(selectInitTime);
 
     const ballType = (function dependTimeToChangeBall() {
-        switch (initTime) {
-            case 30:
-                return 'ultraball';
-            case 20:
-                return 'greatball';
-            default:
-                return '';
+        if (initTime >= 30) {
+            return 'ultraball';
         }
+        if (initTime >= 20) {
+            return 'greatball';
+        }
+        return '';
     })();
 
     return (

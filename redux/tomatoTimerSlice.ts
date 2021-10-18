@@ -28,12 +28,21 @@ export const counterSlice = createSlice({
         setTime: (state, { payload }: PayloadAction<number>) => {
             state.time = payload;
         },
-        decrementTime: (state) => {
-            state.time -= 1;
+        incrementTime: (state, { payload }: PayloadAction<number>) => {
+            state.time += payload;
+        },
+        decrementTime: (state, { payload }: PayloadAction<number>) => {
+            state.time -= payload;
         },
         // Use the PayloadAction type to declare the contents of `action.payload`
         setInitTime: (state, { payload }: PayloadAction<number>) => {
             state.initTime = payload;
+        },
+        decrementInitTime: (state, { payload }: PayloadAction<number>) => {
+            state.initTime -= payload;
+        },
+        incrementInitTime: (state, { payload }: PayloadAction<number>) => {
+            state.initTime += payload;
         },
         setTimerId: (state, { payload }: PayloadAction<number | undefined>) => {
             state.timerId = payload;
@@ -41,7 +50,16 @@ export const counterSlice = createSlice({
     },
 });
 
-export const { setIsStart, setTime, setInitTime, decrementTime, setTimerId } = counterSlice.actions;
+export const {
+    setIsStart,
+    setTime,
+    setInitTime,
+    incrementTime,
+    decrementTime,
+    incrementInitTime,
+    decrementInitTime,
+    setTimerId,
+} = counterSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;

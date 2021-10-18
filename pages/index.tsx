@@ -22,13 +22,13 @@ const Home: NextPage = () => {
             </Head>
             <GlobalStyles />
             <Container>
-                <Timer />
                 <Styled.Animation>
                     <Styled.Circle LoopTime={100}>
                         <circle r={RADIUS} cx={RADIUS + STROKE} cy={RADIUS + STROKE}></circle>
                     </Styled.Circle>
                     <PokeBall />
                 </Styled.Animation>
+                <Timer />
                 <span>study</span>
                 <Button />
             </Container>

@@ -32,6 +32,8 @@ export const Container = styled.div<ContainerProps>`
         width: var(--pokeball-size);
         height: var(--pokeball-size);
         position: relative;
+        left: calc(var(--pokeball-size) * -0.04);
+        top: calc(var(--pokeball-size) * -0.04);
         /* @media (max-height: 500px) {
             --pokeball-size: calc(300px / 1.5);
             width: var(--pokeball-size);
@@ -75,6 +77,7 @@ export const Container = styled.div<ContainerProps>`
             height: calc(var(--pokeball-size) * 0.06);
             background: ${$border};
             top: calc(50% - calc(var(--pokeball-size) * 0.06 / 2));
+            left: calc(var(---pokeball-size) * -0.04);
         }
         .inner {
             width: calc(var(--pokeball-size) / 3.5);
