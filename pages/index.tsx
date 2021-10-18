@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Timer from '@components/Timer';
 import PokeBall from '@components/PokeBall';
 import Button from '@components/Button';
+import Tag from '@components/Tag';
 import GlobalStyles from './styles/Global';
 import { Container } from './styles/Commons';
 import Head from 'next/head';
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
                     <PokeBall />
                 </Styled.Animation>
                 <Timer />
-                <span>study</span>
+                <Tag />
                 <Button />
             </Container>
         </Provider>

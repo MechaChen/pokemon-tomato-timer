@@ -12,12 +12,13 @@ import {
     decrementInitTime,
     incrementInitTime,
 } from '@redux/tomatoTimerSlice';
-import { selectTime, selectInitTime, selectTimerId } from '@redux/selectors';
+import { selectTime, selectInitTime, selectTimerId, selectIsStart } from '@redux/selectors';
 import { useRouter } from 'next/router';
 
 function Timer() {
     const time = useSelector(selectTime);
     const initTime = useSelector(selectInitTime);
+    const isStart = useSelector(selectIsStart);
     const timerId = useSelector(selectTimerId);
     const dispatch = useDispatch();
     const router = useRouter();
@@ -54,15 +55,16 @@ function Timer() {
 
     function clickNext() {
         if (time > 60) return;
+
         dispatch(incrementTime(5));
         dispatch(incrementInitTime(5));
     }
 
     return (
         <Styled.Container>
-            <Styled.Prev onClick={clickPrev} isVisible={time > 10} />
+            <Styled.Prev onClick={clickPrev} isVisible={time > 10 && !isStart} />
             <Styled.Time>{minAndSec}</Styled.Time>
-            <Styled.Next onClick={clickNext} isVisible={time < 60} />
+            <Styled.Next onClick={clickNext} isVisible={time < 60 && !isStart} />
         </Styled.Container>
     );
 }
