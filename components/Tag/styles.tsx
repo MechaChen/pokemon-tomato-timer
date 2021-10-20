@@ -12,4 +12,7 @@ export const Select = styled.select`
 
 export const Option = styled.option`
     color: #fff;
+    border-radius: 5px;
+    padding: 10px 0;
+    background-color: #333;
 `;
