@@ -13,6 +13,7 @@ import {
     incrementInitTime,
 } from '@redux/tomatoTimerSlice';
 import { selectTime, selectInitTime, selectTimerId, selectIsStart } from '@redux/selectors';
+import { TimeLevels } from '@redux/tomatoTimerSlice';
 import { useRouter } from 'next/router';
 
 function Timer() {
@@ -47,24 +48,24 @@ function Timer() {
     );
 
     function clickPrev() {
-        if (time < 10) return;
+        if (time < TimeLevels.level1) return;
 
-        dispatch(decrementTime(5));
-        dispatch(decrementInitTime(5));
+        dispatch(decrementTime(TimeLevels.interval));
+        dispatch(decrementInitTime(TimeLevels.interval));
     }
 
     function clickNext() {
-        if (time > 60) return;
+        if (time > TimeLevels.maxLevel) return;
 
-        dispatch(incrementTime(5));
-        dispatch(incrementInitTime(5));
+        dispatch(incrementTime(TimeLevels.interval));
+        dispatch(incrementInitTime(TimeLevels.interval));
     }
 
     return (
         <Styled.Container>
-            <Styled.Prev onClick={clickPrev} isVisible={time > 10 && !isStart} />
+            <Styled.Prev onClick={clickPrev} isVisible={time > TimeLevels.level1 && !isStart} />
             <Styled.Time>{minAndSec}</Styled.Time>
-            <Styled.Next onClick={clickNext} isVisible={time < 60 && !isStart} />
+            <Styled.Next onClick={clickNext} isVisible={time < TimeLevels.maxLevel && !isStart} />
         </Styled.Container>
     );
 }

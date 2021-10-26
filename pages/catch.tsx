@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
+import { TimeLevels } from '@redux/tomatoTimerSlice';
 import GlobalStyles from './styles/Global';
 import { Container } from './styles/Commons';
 import { useRouter } from 'next/router';
@@ -13,10 +14,10 @@ function Catch() {
     const level = (function getLevelByInitTime() {
         const initTime = Number(router.query.initTime);
 
-        if (initTime >= 30) {
+        if (initTime >= TimeLevels.level3) {
             return 'level3';
         }
-        if (initTime >= 20) {
+        if (initTime >= TimeLevels.level2) {
             return 'level2';
         }
         return 'level1';

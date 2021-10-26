@@ -9,11 +9,19 @@ interface TomatoTimerState {
     timerId: number | undefined;
 }
 
+export enum TimeLevels {
+    interval = 5 * 60,
+    level1 = 25 * 60,
+    level2 = 35 * 60,
+    level3 = 50 * 60,
+    maxLevel = 60 * 60,
+}
+
 // Define the initial state using that type
 export const initialState: TomatoTimerState = {
     isStart: false,
-    initTime: 10,
-    time: 10,
+    initTime: TimeLevels.level1,
+    time: TimeLevels.level1,
     timerId: undefined,
 };
 

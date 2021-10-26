@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import * as Styled from './styles';
+import { TimeLevels } from '@redux/tomatoTimerSlice';
 import { selectIsStart, selectInitTime } from '@redux/selectors';
 
 function PokeBall() {
@@ -7,10 +8,10 @@ function PokeBall() {
     const initTime = useSelector(selectInitTime);
 
     const ballType = (function dependTimeToChangeBall() {
-        if (initTime >= 30) {
+        if (initTime >= TimeLevels.level3) {
             return 'ultraball';
         }
-        if (initTime >= 20) {
+        if (initTime >= TimeLevels.level2) {
             return 'greatball';
         }
         return '';
