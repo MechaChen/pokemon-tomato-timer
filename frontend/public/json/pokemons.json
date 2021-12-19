@@ -1,0 +1,216 @@
+{
+    "level1": [
+        {
+            "id": "001",
+            "name": "Baulbasaur"
+        },
+        {
+            "id": "004",
+            "name": "Charmander"
+        },
+        {
+            "id": "007",
+            "name": "Squirtle"
+        },
+        {
+            "id": "010",
+            "name": "Caterpie"
+        },
+        {
+            "id": "013",
+            "name": "Weedle"
+        },
+        {
+            "id": "016",
+            "name": "Pidgey"
+        },
+        {
+            "id": "019",
+            "name": "Rattata"
+        },
+        {
+            "id": "021",
+            "name": "Spearow"
+        },
+        {
+            "id": "023",
+            "name": "Ekans"
+        },
+        {
+            "id": "025",
+            "name": "Pikachu"
+        },
+        {
+            "id": "027",
+            "name": "Sandshrew"
+        },
+        {
+            "id": "029",
+            "name": "Nidoran"
+        },
+        {
+            "id": "032",
+            "name": "Nidoran"
+        },
+        {
+            "id": "035",
+            "name": "Clefairy"
+        },
+        {
+            "id": "037",
+            "name": "Vulpix"
+        },
+        {
+            "id": "039",
+            "name": "Jigglypuff"
+        },
+        {
+            "id": "041",
+            "name": "Zubat"
+        },
+        {
+            "id": "043",
+            "name": "Oddish"
+        },
+        {
+            "id": "063",
+            "name": "Abra"
+        }
+    ],
+    "level2": [
+        {
+            "id": "003",
+            "name": "Venusaur"
+        },
+        {
+            "id": "006",
+            "name": "Charizard"
+        },
+        {
+            "id": "031",
+            "name": "Nidoqueen"
+        },
+        {
+            "id": "034",
+            "name": "Nidoking"
+        },
+        {
+            "id": "038",
+            "name": "Ninetales"
+        },
+        {
+            "id": "040",
+            "name": "Wigglytuff"
+        },
+        {
+            "id": "055",
+            "name": "Golduck"
+        },
+        {
+            "id": "057",
+            "name": "Primeape"
+        },
+        {
+            "id": "059",
+            "name": "Arcanine"
+        },
+        {
+            "id": "062",
+            "name": "Poliwarth"
+        },
+        {
+            "id": "064",
+            "name": "Kadabra"
+        },
+        {
+            "id": "068",
+            "name": "Machamp"
+        },
+        {
+            "id": "071",
+            "name": "Victreebel"
+        },
+        {
+            "id": "073",
+            "name": "Tentacruel"
+        },
+        {
+            "id": "076",
+            "name": "Golem"
+        },
+        {
+            "id": "078",
+            "name": "Rapidash"
+        },
+        {
+            "id": "080",
+            "name": "Slowbro"
+        },
+        {
+            "id": "082",
+            "name": "Magneton"
+        },
+        {
+            "id": "091",
+            "name": "Cloyster"
+        }
+    ],
+    "level3": [
+        {
+            "id": "121",
+            "name": "Starmie"
+        },
+        {
+            "id": "123",
+            "name": "Scyther"
+        },
+        {
+            "id": "125",
+            "name": "Electabuzz"
+        },
+        {
+            "id": "126",
+            "name": "Magmar"
+        },
+        {
+            "id": "131",
+            "name": "Lapras"
+        },
+        {
+            "id": "132",
+            "name": "Ditto"
+        },
+        {
+            "id": "141",
+            "name": "Kabutops"
+        },
+        {
+            "id": "143",
+            "name": "Snorlax"
+        },
+        {
+            "id": "144",
+            "name": "Articuno"
+        },
+        {
+            "id": "145",
+            "name": "Zapdos"
+        },
+        {
+            "id": "146",
+            "name": "Moltres"
+        },
+        {
+            "id": "149",
+            "name": "Dragonite"
+        },
+        {
+            "id": "150",
+            "name": "Mewtwo"
+        },
+        {
+            "id": "151",
+            "name": "Mew"
+        }
+    ]
+}
