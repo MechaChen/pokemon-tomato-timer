@@ -15,26 +15,26 @@ const RADIUS = 175;
 const STROKE = 5;
 
 const Home: NextPage = () => {
-    useEffect(() => {
-        if (
-            typeof window !== undefined &&
-            typeof window.navigator &&
-            'serviceWorker' in window.navigator
-        ) {
-            /*
-            window.navigator.serviceWorker
-                .register('./sw.js', { scope: './' })
-                .then((reg) => {
-                    // registration worked
-                    console.log('Registration succeeded. Scope is ' + reg.scope);
-                })
-                .catch((error) => {
-                    // registration failed
-                    console.log('Registration failed with ' + error);
-                });
-                */
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (
+    //         typeof window !== undefined &&
+    //         typeof window.navigator &&
+    //         'serviceWorker' in window.navigator
+    //     ) {
+    //         /*
+    //         window.navigator.serviceWorker
+    //             .register('./sw.js', { scope: './' })
+    //             .then((reg) => {
+    //                 // registration worked
+    //                 console.log('Registration succeeded. Scope is ' + reg.scope);
+    //             })
+    //             .catch((error) => {
+    //                 // registration failed
+    //                 console.log('Registration failed with ' + error);
+    //             });
+    //             */
+    //     }
+    // }, []);
 
     return (
         <Provider store={store}>

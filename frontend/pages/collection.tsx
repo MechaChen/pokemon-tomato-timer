@@ -31,7 +31,14 @@ function Collection() {
     const observer = useRef<IntersectionObserver>();
 
     useEffect(() => {
-        setLoadedPokemons(allPokemons.slice(0, 16));
+        (async function () {
+            const allPokemons = await fetch('http://localhost:8000/pokemons', {
+                redirect: 'error',
+            });
+            console.log('allPokemons =>', allPokemons);
+        })();
+
+        // setLoadedPokemons(allPokemons.slice(0, 16));
     }, []);
 
     function getLastRef(node: HTMLDivElement) {
