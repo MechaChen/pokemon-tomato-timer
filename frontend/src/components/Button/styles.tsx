@@ -6,9 +6,9 @@ export const Container = styled.button`
     margin-top: 20px;
     width: 150px;
     box-sizing: border-box;
-    padding: 10px 20px;
+    padding: 12px 20px;
     background-color: ${(props) => (props.disabled ? '#ccc' : '#EBE8A1')};
-    font-size: 20px;
-    border-radius: 8px;
+    font-size: 16px;
+    border-radius: 20px;
     color: #333;
 `;

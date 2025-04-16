@@ -1,9 +1,15 @@
+import { ReactNode } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { decrementTime, setTimerId, setIsStart } from '@redux/tomatoTimerSlice';
+import { decrementTime, setTimerId, setIsStart } from '../../redux/tomatoTimerSlice';
 import * as Styled from './styles';
-import { selectIsStart } from '@redux/selectors';
+import { selectIsStart } from '../../redux/selectors';
 
-function Button() {
+interface ButtonProps {
+    children: ReactNode;
+    onClick: () => void;
+}
+
+function Button({ children, onClick }: ButtonProps) {
     const isStart = useSelector(selectIsStart);
 
     const dispatch = useDispatch();
@@ -18,7 +24,7 @@ function Button() {
 
     return (
         <Styled.Container onClick={countDown} disabled={isStart}>
-            {isStart ? 'Be Focus!' : 'Start'}
+            {children}
         </Styled.Container>
     );
 }

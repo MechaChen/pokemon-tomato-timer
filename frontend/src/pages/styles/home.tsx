@@ -32,12 +32,12 @@ export const Circle = styled.svg<CircleProps>`
         stroke-dashoffset: 0px;
         stroke-linecap: round;
         stroke-width: 5px;
-        stroke: ${(props) => (props.LoopTime > 0 ? '#26bec9' : '#666')};
+        stroke: ${(props) => (props.LoopTime > 0 ? '#eee' : '#666')};
         fill: none;
         animation: ${(props) =>
             props.LoopTime > 0 &&
             css`{
-                countdown ${(props: CircleProps) => props.LoopTime}s linear forwards;
+                countdown ${props.LoopTime}s linear forwards;
             `};
     }
     @keyframes countdown {

@@ -10,11 +10,15 @@ interface TomatoTimerState {
 }
 
 export enum TimeLevels {
-    interval = 5 * 60,
-    level1 = 25 * 60,
-    level2 = 35 * 60,
-    level3 = 50 * 60,
-    maxLevel = 60 * 60,
+    interval = 1,
+    level1 = 2,
+    level2 = 4,
+    level3 = 6,
+    maxLevel = 60,
+    // level1 = 25,
+    // level2 = 35,
+    // level3 = 50,
+    // maxLevel = 60,
 }
 
 // Define the initial state using that type

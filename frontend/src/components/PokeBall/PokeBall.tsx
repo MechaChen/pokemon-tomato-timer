@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import * as Styled from './styles';
-import { TimeLevels } from '@redux/tomatoTimerSlice';
-import { selectIsStart, selectInitTime } from '@redux/selectors';
+import { TimeLevels } from '../../redux/tomatoTimerSlice';
+import { selectIsStart, selectInitTime } from '../../redux/selectors';
 
 function PokeBall() {
     const isStart = useSelector(selectIsStart);
